@@ -1,0 +1,180 @@
+<view class="title">内置样式</view>
+<!-- 在app.json中引入内置样式 @import "path/to/van-weapp/dist/common/index.wxss"; -->
+<view class='tip'>文字shenglue</view>
+<view class="van-ellipsis">这是一段宽度限制250px的文字，后面的内容会省略</view>
+<view class='tip'>最多显示两行</view>
+<view class="van-multi-ellipsis--l2">这是一段最多显示两行的文字，后面的内容会省略,哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</view>
+<view class='tip'>最多显示三行</view>
+<view class="van-multi-ellipsis--l3">
+    这是一段最多显示三行的文字，后面的内容会省略,哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+</view>
+<view class="tip">1px边框</view>
+<view class="tip">上边框</view>
+<view class="border van-hairline--top"></view>
+<view class="tip">下边框</view>
+<view class="border van-hairline--bottom"></view>
+<view class="tip">左边框</view>
+<view class="border van-hairline--left"></view>
+<view class="tip">右边框</view>
+<view class="border van-hairline--right"></view>
+<view class="tip">上下边框</view>
+<view class="border van-hairline--top-bottom"></view>
+<view class="tip">全边框</view>
+<view class="border van-hairline--surround"></view>
+<view class="title">button 按钮</view>
+<view class="tip">按钮类型</view>
+<van-button type="default">默认按钮</van-button>
+<van-button type="primary">主要按钮</van-button>
+<van-button type="warning">警告按钮</van-button>
+<van-button type="danger">危险按钮</van-button>
+<view class="tip">朴素按钮</view>
+<van-button plain type="primary">朴素按钮</van-button>
+<van-button plain type="danger">朴素按钮</van-button>
+<view class="tip">禁用状态</view>
+<view>通过disabled属性来禁用按钮，此时按钮不可点击</view>
+<van-button disabled type="primary">禁用状态</van-button>
+<van-button disabled type="danger">禁用状态</van-button>
+<view class="title">加载状态</view>
+<van-button loading type="primary"></van-button>
+<van-button loading type="danger"></van-button>
+<view class="tip">按钮形状</view>
+<van-button square type="primary">方形按钮</van-button>
+<van-button round type="danger">圆形按钮</van-button>
+<view class="tip">按钮尺寸</view>
+<view>支持large、normal、small、mini四种尺寸，默认为normal</view>
+<van-button size="large">大号按钮</van-button>
+<van-button size="normal">普通按钮</van-button>
+<van-button size="small">小型按钮</van-button>
+<van-button size="mini">迷你按钮</van-button>
+<view class="tip">API</view>
+<!-- <view>
+参数	 说明	 类型	默认值
+id	标识符	String	-
+type	按钮类型，可选值为 primary warning danger	String	default
+size	按钮尺寸，可选值为 normal large small mini	String	normal
+plain	是否为朴素按钮	Boolean	false
+disabled	是否禁用按钮	Boolean	false
+loading	是否显示为加载状态	Boolean	false
+block	是否为块级元素	Boolean	false
+round	是否为圆形按钮	Boolean	false
+square	是否为方形按钮	Boolean	false
+open-type	微信开放能力，具体支持可参考 微信官方文档	String	-
+app-parameter	打开 APP 时，向 APP 传递的参数	String	-
+lang	指定返回用户信息的语言，zh_CN 简体中文，
+zh_TW 繁体中文，en 英文	String	en
+session-from	会话来源	String	-
+send-message-title	会话内消息卡片标题	String	当前标题
+send-message-path	会话内消息卡片点击跳转小程序路径	String	当前分享路径
+send-message-img	sendMessageImg	String	截图
+show-message-card	显示会话内消息卡片	String	false
+</view> -->
+<view class="tip">Event</view>
+<!-- <view>
+事件名	说明	参数
+bind:click	点击按钮且按钮状态不为加载或禁用时触发	-
+bind:getuserinfo	用户点击该按钮时，会返回获取到的用户信息，
+从返回参数的 detail 中获取到的值同 wx.getUserInfo	-
+bind:contact	客服消息回调	-
+bind:getphonenumber	获取用户手机号回调	-
+bind:error	当使用开放能力时，发生错误的回调	-
+bind:opensetting	在打开授权设置页后回调
+</view>
+<view class="tip">外部样式类</view> -->
+<view>类名	            说明
+custom-class	根节点样式类
+loading-class	加载图标样式类</view>
+<view class="title">Cell 单元格</view>
+<view class="tip">基础用法</view>
+<view>Cell可以单独使用，也可以与CellGroup搭配使用。CellGroup可以为Cell提供上下外边框。</view>
+<van-cell-group>
+    <van-cell title="单元格" value="内容"></van-cell>
+    <van-cell title="单元格" value="内容" label="描述信息" border="{{false}}"></van-cell>
+</van-cell-group>
+<view class="tip">单元格大小</view>
+<view>通过size属性可以控制单元格的大小</view>
+<van-cell title="单元格" value="内容" size="large"></van-cell>
+<van-cell title="单元格" value="内容" size="large" label="描述信息"></van-cell>
+<view class="tip">展示图标</view>
+<van-cell title="单元格" icon="location-o"></van-cell>
+<view class="tip">展示箭头</view>
+<van-cell title="单元格" icon="location-o"></van-cell>
+<view>传入is-link属性则会在右侧显示箭头，并且可以通过传入arrow-direction属性控制箭头方向</view>
+<van-cell title="单元格" islink></van-cell>
+<van-cell title="单元格" value="内容" is-link></van-cell>
+<van-cell title="单元格" value="内容" is-link arrow-direction="down" url="../logs/logs"></van-cell>
+<view class="tip">高级用法</view>
+<view>如以上用法不能满足你的需求，可以使用对应的插槽来自定义显示的内容</view>
+<van-cell value="内容" icon="shop-o" is-link>
+    <view slot="title">
+        <view class="van-cell-text">单元格</view>
+        <van-tag type="danger">标签</van-tag>
+    </view>
+</van-cell>
+<van-cell title="单元格" icon="location-o" is-link></van-cell>
+<van-cell title="单元格">
+    <van-icon slot="right-icon" name="search" class="van-cell__right-icon"></van-icon>
+</van-cell>
+<view class="tip">CellGroup API</view>
+<view>参数	说明	         类型	默认值
+border	是否显示外边框	Boolean	true</view>
+<view class="tip">CellGroup 外部样式类</view>
+<view>类名	            说明
+    custom-class	根节点样式类</view>
+<view class="tip">Cell API</view>
+<!-- <view>
+        参数	说明	类型	默认值
+icon	左侧图标名称或图片链接，可选值见 Icon 组件	String	-
+title	左侧标题	String | Number	-
+title-width	标题宽度，须包含单位	String	-
+value	右侧内容	String | Number	-
+label	标题下方的描述信息	String	-
+size	单元格大小，可选值为 large	String	-
+border	是否显示下边框	Boolean	true
+center	是否使内容垂直居中	Boolean	false
+url	跳转链接	String	-
+link-type	链接跳转类型，可选值为 redirectTo switchTab reLaunch	String	navigateTo
+clickable	是否开启点击反馈	Boolean	false
+is-link	是否展示右侧箭头并开启点击反馈	Boolean	false
+required	是否显示表单必填星号	Boolean	false
+arrow-direction	箭头方向，可选值为 left up down	String
+</view> -->
+<view class="tip">Cell Slot</view>
+<!-- <view>
+名称	说明
+-	自定义value显示内容，如果设置了value属性则不生效
+title	自定义title显示内容，如果设置了title属性则不生效
+icon	自定义icon显示内容，如果设置了icon属性则不生效
+right-icon	自定义右侧按钮，默认是arrow，如果设置了is-link属性则不生效
+</view> -->
+<view class="tip">Cell 外部样式类</view>
+<!-- <view>
+    类名	            说明
+custom-class	根节点样式类
+title-class	标题样式类
+label-class	描述信息样式类
+value-class	右侧内容样式类
+</view> -->
+<view class="title">Icon 图标</view>
+<view class="tip">基础用法</view>
+<view>Icon的name属性支持传入图标名称或图片链接</view>
+<van-icon name="close"/>
+<van-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" />
+<view class="tip">显示徽标</view>
+<van-icon name="chat" info="9"/>
+<van-icon name="chat" info="99+" />
+<view class="tip">API</view>
+<view>
+参数	 说明	           类型	   默认值
+name	图标名称或图片链接	String	-
+info	图标右上角文字提示	String | Number	-
+color	图标颜色	String	inherit
+size	图标大小，如 20px，2em	String	inherit
+custom-style	自定义样式	String	-
+class-prefix	类名前缀	String	van-icon
+</view>
+<view class="tip">外部样式类</view>
+<view>
+      类名	       说明
+custom-class	根节点样式类
+</view>
+<view class="title">Layout布局</view>
