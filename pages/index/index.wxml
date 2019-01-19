@@ -157,14 +157,14 @@ value-class	右侧内容样式类
 <view class="title">Icon 图标</view>
 <view class="tip">基础用法</view>
 <view>Icon的name属性支持传入图标名称或图片链接</view>
-<van-icon name="close"/>
+<van-icon name="close" />
 <van-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" />
 <view class="tip">显示徽标</view>
-<van-icon name="chat" info="9"/>
+<van-icon name="chat" info="9" />
 <van-icon name="chat" info="99+" />
 <view class="tip">API</view>
 <view>
-参数	 说明	           类型	   默认值
+    参数	 说明	           类型	   默认值
 name	图标名称或图片链接	String	-
 info	图标右上角文字提示	String | Number	-
 color	图标颜色	String	inherit
@@ -173,8 +173,105 @@ custom-style	自定义样式	String	-
 class-prefix	类名前缀	String	van-icon
 </view>
 <view class="tip">外部样式类</view>
-<view>
-      类名	       说明
-custom-class	根节点样式类
-</view>
+<view>类名	       说明
+custom-class	根节点样式类</view>
 <view class="title">Layout布局</view>
+<view class="tip">基本用法</view>
+<view>Layout组件提供了24列栅格，通过在Col上添加span属性设置列所占的宽度百分比，此外。添加offset属性可以设置列的偏移宽度，计算方式与span相同</view>
+<van-row>
+    <van-col span="8">span:8</van-col>
+    <van-col span="8">span:8</van-col>
+    <van-col span="8">span:8</van-col>
+</van-row>
+<van-row>
+    <van-col span="4">span:4</van-col>
+    <van-col span="10" offset="4">span:10,offset:4</van-col>
+</van-row>
+<van-row>
+    <van-col offset="12" apan="12">offset:12,span:12</van-col>
+</van-row>
+<view class="tip">设置列元素间距</view>
+<view>通过 gutter 属性可以设置列元素之间的间距，默认间距为0</view>
+<van-row gutter="20">
+    <van-col span="8">span:8</van-col>
+    <van-col span="8">span:8</van-col>
+    <van-col span="8">span:8</van-col>
+</van-row>
+<view class="tip">API</view>
+<view>
+    Row
+参数	说明	类型	默认值
+gutter	列元素之间的间距（单位为px）	String | Number	-
+参数	说明	类型	默认值
+span	列元素宽度	String | Number	-
+offset	列元素偏移距离	String | Number
+</view>
+<view class="tip">外部样式类</view>
+<view>类名	说明
+custom-class	根节点样式类</view>
+<view class="title">Popup</view>
+<view class="tip">基础用法</view>
+<view>通过position属性设置 Popup 弹出位置</view>
+<van-popup show="{{show}}" bind:close="onClose" position="top" overlay="{{false}}">内容</van-popup>
+<view class="tip">API</view>
+<view>
+    参数	说明	类型	默认值
+show	是否显示弹出层	Boolean	false
+z-index	z-index 层级	Number	100
+overlay	是否显示背景蒙层	Boolean	true
+position	可选值为 top bottom right left	String	-
+duration	动画时长，单位为毫秒	Number	300
+custom-style	自定义弹出层样式	String	``
+overlay-style	自定义背景蒙层样式	String	``
+close-on-click-overlay	点击蒙层是否关闭 Popup	Boolean	true
+safe-area-inset-bottom	是否适配iPhoneX	Boolean	true
+</view>
+<view class="tip">Event</view>
+<view>事件名	说明	参数
+bind:close	蒙层关闭时触发	-
+bind:click-overlay	点击蒙层时触发</view>
+<view class="tip">外部样式类</view>
+<view>类名	说明
+custom-class	根节点样式类</view>
+<view class="title">Transition 动画</view>
+<view class="tip">基础用法</view>
+<view>将元素包裹在 transition 组件内，在元素展示/隐藏时，会有相应的过渡动画</view>
+<van-transition show="{{show}}" name="fade-down" custom-class="block">内容</van-transition>
+<view class="tip">动画类型</view>
+<view>transiton组件内置了多种动画，可以通过name字段指定动画类型</view>
+<van-transition name="fade-up"></van-transition>
+<view class="tip">API</view>
+<view>
+    参数	说明	类型	默认值
+name	动画类型	String	fade
+show	是否展示组件	Boolean	true
+duration	动画时长，单位为毫秒	Number	300
+custom-style	自定义样式
+</view>
+<view class="tip">外部样式类</view>
+<view>类名	说明
+custom-class	根节点样式类</view>
+<view class="tip">动画类型</view>
+<view>
+    名称	说明
+fade	淡入
+fade-up	上滑淡入
+fade-down	下滑淡入
+fade-left	左滑淡入
+fade-right	右滑淡入
+slide-up	上滑进入
+slide-down	下滑进入
+slide-left	左滑进入
+slide-right	右滑进入
+</view>
+<view class="title">Checkbox复选框</view>
+<view class="tip">基础用法</view>
+<van-checkbox value="{{checked}}" bind:change="onChange">复选框</van-checkbox>
+<view class="tip">禁用状态</view>
+<van-checkbox disabled value="{{checked}}" bind:change="onChange">复选框</van-checkbox>
+<view class="tip">自定义颜色</view>
+<van-checkbox value="{{checked}}" checked-color="#07c160" bind:change="onChange">复选框</van-checkbox>
+<view class="tip">自定义图标</view>
+<van-checkbox use-icon-slot value="{{checked}}" bind:change="onChange">
+    <image slot="icon" src="{{checked?icon.active:icon.normal}}" />
+</van-checkbox>
