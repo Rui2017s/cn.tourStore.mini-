@@ -273,5 +273,139 @@ slide-right	右滑进入
 <van-checkbox value="{{checked}}" checked-color="#07c160" bind:change="onChange">复选框</van-checkbox>
 <view class="tip">自定义图标</view>
 <van-checkbox use-icon-slot value="{{checked}}" bind:change="onChange">
-    <image slot="icon" src="{{checked?icon.active:icon.normal}}" />
+    自定义图标
+    <image slot="icon" src="{{checked?icon.active:icon.normal}}" style="width:20px;height:20px" />
 </van-checkbox>
+<view class="tip">复选框组</view>
+<view>
+    需要与van-checkbox-group一起使用，选中值是一个数组，通过value绑定在van-checkbox-group上，数组中的项即为选中的Checkbox的name属性设置的值
+</view>
+<van-checkbox-group value="{{ result }}" bind:change="onChange1">
+    <van-checkbox wx:for="{{ list }}" wx:key="index" name="{{ item }}">复选框 {{ item }}</van-checkbox>
+</van-checkbox-group>
+<view class="tip">设置最大可选数</view>
+<van-checkbox-group value="{{ result }}" bind:change="onChange1" max="2">
+    <van-checkbox wx:for="{{ list }}" wx:key="index" name="{{ item }}">复选框 {{ item }}</van-checkbox>
+</van-checkbox-group>
+<view class="tip">搭配单元格组件使用</view>
+<van-checkbox-group value="{{result}}" bind:change="onChange1">
+    <van-cell-group>
+        <van-cell wx:for="{{list}}" wx:key="index" title="复选框{{item}}" clickable data-name="{{item}}" bind:click="toggle">
+            <van-checkbox catch:tap="noop" class="checkboxes-{{item}}" name="{{item}}"></van-checkbox>
+        </van-cell>
+    </van-cell-group>
+</van-checkbox-group>
+<view class="tip">Checkbox API</view>
+<view>
+    参数	    说明	        类型	     默认值  
+name	标识 Checkbox 名称	any	-
+value	是否为选中状态	Boolean	false
+disabled	是否禁用单选框	Boolean	false
+label-disabled	是否禁用单选框内容点击	Boolean	false
+label-position	文本位置，可选值为 left	String	right
+shape	形状，可选值为 round square	String	round
+use-icon-slot	是否使用 icon slot	Boolean	false
+checked-color	选中状态颜色	String	#1989fa
+</view>
+<view class="tip">CheckboxGroup API</view>
+<view>
+    参数	说明	               类型	       默认值
+name	在表单内提交时的标识符	String	-
+value	所有选中项的 name	Array	-
+disabled	是否禁用所有单选框	Boolean	false
+max	设置最大可选数	Number	0（无限制）
+</view>
+<view class="tip">Checkbox Event</view>
+<view>事件名	             说明	            回调参数
+bind:change	当绑定值变化时触发的事件	当前组件的值</view>
+<view class="tip">CheckboxGroup Event</view>
+<view>事件名	             说明	            回调参数
+bind:change	当绑定值变化时触发的事件	当前组件的值</view>
+<view class="tip">Checkbox Slot</view>
+<view>名称	说明	slot-scope
+-	自定义文本	-
+icon	自定义图标	checked: 是否为选中状态</view>
+<view class="tip">Checkbox 方法</view>
+<view>通过 selectComponent 可以获取到 checkbox 实例并调用实例方法</view>
+<view>方法名	参数	返回值	介绍
+toggle	-	-	切换选中状态</view>
+<view class="title">DatetimePicker时间选择</view>
+<view class="tip">选择完整时间</view>
+<view>value为时间戳</view>
+<van-datetime-picker type="datetime" value="{{currentDate}}" min-date="{{minDate}}" max-date="{{maxDate}}" bind:Change="onChange3"></van-datetime-picker>
+<view class="tip">选择日期</view>
+<van-datetime-picker type="date" value="{{currentDate}}" min-date="minDate" bind:change="onChange3"></van-datetime-picker>
+<view class="tip">选择时间</view>
+<van-datetime-picker type="time" value="{{currentDate}}" min-hour="{{minHour}}" maxHour="{{maxHour}}" bind:change="onChange3"></van-datetime-picker>
+<view class="tip">API</view>
+<view>
+    参数	说明	类型	默认值
+value	当前选中值	String | Number	-
+type	类型，可选值为 date time year-month 
+不建议动态修改	String	datetime
+min-date	可选的最小时间，精确到分钟	Number	十年前
+max-date	可选的最大时间，精确到分钟	Number	十年后
+min-hour	可选的最小小时，针对 time 类型	Number	0
+max-hour	可选的最大小时，针对 time 类型	Number	23
+min-minute	可选的最小分钟，针对 time 类型	Number	0
+max-minute	可选的最大分钟，针对 time 类型	Number	59
+title	顶部栏标题	String	''
+show-toolbar	是否显示顶部栏	Boolean	false
+loading	是否显示加载状态	Boolean	false
+item-height	选项高度	Number	44
+confirm-button-text	确认按钮文字	String	确认
+cancel-button-text	取消按钮文字	String	取消
+visible-item-count	可见的选项个数	Number	5
+</view>
+<view class="tip">Event</view>
+<view>
+    事件名称	说明	回调参数
+input	当值变化时触发的事件	当前 value
+change	当值变化时触发的事件	组件实例
+confirm	点击完成按钮时触发的事件	当前 value
+cancel	点击取消按钮时触发的事件
+</view>
+<view class="tip">change 事件</view>
+<view>在change事件中，可以获取到组件实例，对组件进行相应的更新等操作：</view>
+<view>
+    函数	说明
+getColumnValue(index)	获取对应列中选中的值
+setColumnValue(index, value)	设置对应列中选中的值
+getColumnValues(index)	获取对应列中所有的备选值
+setColumnValues(index, values)	设置对应列中所有的备选值
+getValues()	获取所有列中被选中的值，返回一个数组
+setValues(values)	values为一个数组，设置所有列中被选中的值
+</view>
+<view class="title">Filed 输入框</view>
+<view class="tip">基础用法</view>
+<van-cell-group>
+    <van-field value="{{value}}" placeholder="请输入用户名" border="{{false}}" bind:change="onChange4"></van-field>
+</van-cell-group>
+<view class="tip">自定义类型</view>
+<van-cell-group>
+    <van-field value="{{username}}" required clearable label="用户名" icon="question-o" placeholder="请输入用户名" bind:click-icon="onClickIcon"></van-field>
+    <van-field value="{{password}}" type="password" label="密码" placeholder="请输入密码" required border="false"></van-field>
+</van-cell-group>
+<view class="tip">禁用输入框</view>
+<van-cell-group>
+    <van-field value="输入框已被禁止" label="用户名" left-icon="contact" disabled border="{{false}}"></van-field>
+</van-cell-group>
+<view class="tip">错误提示</view>
+<view>通过error或者error-message属性增加对应的错误提示</view>
+<van-cell-group>
+    <van-field value="{{username}}" label="用户名" placeholder="请输入用户" error></van-field>
+    <van-field value="{{phone}}" label="手机号" placeholder="请输入手机号" error-message="手机号码格式错误" border="{{false}}"></van-field>
+</van-cell-group>
+<view class="tip">高度自适应</view>
+<view>对于 textarea，可以通过autosize属性设置高度自适应</view>
+<van-cell-group>
+    <van-field value="{{message}}" label="留言" type="textarea" placeholder="请输入留言" autosize border="{{false}}"></van-field>
+</van-cell-group>
+<view class="tip">插入按钮</view>
+<view>通过 button slot 可以在输入框尾部插入按钮</view>
+<van-cell-group>
+    <van-field value="{{sms}}" center clearable label="短信验证码" placeholder="请输入短信验证码" border="{{false}}" use-button-slot>
+        <van-button slot="button" size="small" type="primary">发送验证码</van-button>
+    </van-field>
+</van-cell-group>
+<view class="tip">API</view>
