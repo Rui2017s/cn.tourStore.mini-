@@ -409,3 +409,410 @@ setValues(values)	values为一个数组，设置所有列中被选中的值
     </van-field>
 </van-cell-group>
 <view class="tip">API</view>
+<view>
+    参数	说明	类型	默认值
+name	在表单内提交时的标识符	String	-
+label	输入框左侧文本	String	-
+value	当前输入的值	String | Number	-
+type	可设置为任意原生类型, 如 number idcard textarea digit	String	text
+fixed	如果 type 为 textarea 且在一个 position:fixed 的区域，需要显示指定属性 fixed 为 true	Boolean	false
+focus	获取焦点	Boolean	false
+border	是否显示内边框	Boolean	true
+disabled	是否禁用输入框	Boolean	false
+readonly	是否只读	Boolean	false
+clearable	是否启用清除控件	Boolean	false
+required	是否显示表单必填星号	Boolean	false
+title-width	标题宽度	String	90px
+maxlength	最大输入长度，设置为 -1 的时候不限制最大长度	Number	-1
+placeholder	输入框为空时占位符	String	-
+placeholder-style	指定 placeholder 的样式	String	-
+is-link	是否展示右侧箭头并开启点击反馈	Boolean	false
+error	是否将输入内容标红	Boolean	false
+error-message	底部错误提示文案，为空时不展示	String	''
+input-align	输入框内容对齐方式，可选值为 center right	String	left
+autosize	自适应内容高度，只对 textarea 有效	Boolean	false
+icon	输入框尾部图标名称或图片链接，可选值见 Icon 组件	String	-
+left-icon	输入框左侧图标名称或图片链接，可选值见 Icon 组件	String	-
+confirm-type	设置键盘右下角按钮的文字，仅在 type='text' 时生效	String	done
+confirm-hold	点击键盘右下角按钮时是否保持键盘不收起，在 type='textarea' 时无效	Boolean	false
+cursor-spacing	输入框聚焦时底部与键盘的距离	Number	50
+adjust-position	键盘弹起时，是否自动上推页面	Boolean	true
+use-icon-slot	是否使用 icon slot	Boolean	false
+use-button-slot	是否使用 button slot	Boolean	false
+show-confirm-bar	是否显示键盘上
+</view>
+<view class="tip">Event</view>
+<view>
+    事件	说明	回调参数
+bind:input	输入内容时触发	value: 当前输入值
+bind:change	输入内容时触发	value: 当前输入值
+bind:confirm	点击完成按钮时触发	value: 当前输入值
+bind:click-icon	点击尾部图标时触发	-
+bind:focus	输入框聚焦时触发	event.detail.value: 当前输入值; 
+event.detail.height: 键盘高度(在基础库 1.9.90 起支持)
+bind:blur	输入框失焦时触发	event.detail.value: 当前输入值; 
+event.detail.cursor: 游标位置(如果 type 不为 textarea，值为 0)
+bind:clear	点击清空控件时触发	-
+</view>
+<view class="tip">Slot</view>
+<view>
+    名称	说明
+label	自定义输入框标签，如果设置了label属性则不生效
+left-icon	自定义输入框头部图标，如果设置了left-icon属性则不生效
+icon	自定义输入框尾部图标，需要设置use-icon-slot属性，如果设置了icon属性则不生效
+button	自定义输入框尾部按钮，需要设置use-button-slot属性
+</view>
+<view class="tip">外部样式类</view>
+<view>类名	说明
+input-class	输入框样式类
+icon-class	右侧图标样式类</view>
+<view class="title">Picker 选择器</view>
+<view>选择器组件通常与弹出层组件配合使用</view>
+<view class="tip">基础用法</view>
+<van-picker columns="{{columns}}" bind:change="onChange5"></van-picker>
+<van-toast id="van-toast"></van-toast>
+<view class="tip">禁用选项</view>
+<view>选项可以为对象结构，通过设置 disabled 来禁用该选项</view>
+<van-picker columns="{{column2}}"></van-picker>
+<view class="tip">展示顶部栏</view>
+<van-picker show-toolbar title="标题" columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm"></van-picker>
+<view class="tip">多列联动</view>
+<van-picker show-toolbar title="标题" columns="{{column3}}" bind:change="onChange6"></van-picker>
+<view class="tip">加载状态</view>
+<view>当 Picker 数据是通过异步获取时，可以通过 loading 属性显示加载提示</view>
+<van-picker columns="{{columns}}" loading></van-picker>
+<view class="tip">API</view>
+<view>
+    参数	说明	类型	默认值	版本
+columns	对象数组，配置每一列显示的数据	Array	[]	-
+show-toolbar	是否显示顶部栏	Boolean	false	-
+title	顶部栏标题	String	''	-
+loading	是否显示加载状态	Boolean	false	-
+value-key	选项对象中，文字对应的 key	String	text	-
+item-height	选项高度	Number	44	-
+confirm-button-text	确认按钮文字	String	确认	-
+cancel-button-text	取消按钮文字	String	取消	-
+visible-item-count	可见的选项个数	Number	5	-
+</view>
+<view class="tip">Event</view>
+<view>Picker 组件的事件会根据 columns 是单列或多列返回不同的参数</view>
+<view>
+    事件名	说明	参数
+confirm	点击完成按钮时触发	单列：选中值，选中值对应的索引
+多列：所有列选中值，所有列选中值对应的索引
+cancel	点击取消按钮时触发	单列：选中值，选中值对应的索引
+多列：所有列选中值，所有列选中值对应的索引
+change	选项改变时触发	单列：Picker 实例，选中值，选中值对应的索引
+多列：Picker 实例，所有列选中值，当前列对应的索引
+</view>
+<view class="tip">Columns数据结构</view>
+<view>当传入多列数据时，columns为一个对象数组，数组中的每一个对象配置每一列，每一列有以下key</view>
+<view>key	说明
+values	列中对应的备选值
+defaultIndex	初始选中项的索引，默认为 0</view>
+<view class="tip">外部样式类</view>
+<view>custom-class	根节点样式类
+active-class	选中项样式类
+toolbar-class	顶部栏样式类
+column-class	列样式类</view>
+<view class="tip">方法</view>
+<view>通过 selectComponent 可以获取到 picker 实例并调用实例方法</view>
+<view>
+    方法名	参数	返回值	介绍
+getValues	-	values	获取所有列选中的值
+setValues	values	-	设置所有列选中的值
+getIndexes	-	indexes	获取所有列选中值对应的索引
+setIndexes	indexes	-	设置所有列选中值对应的索引
+getColumnValue	columnIndex	value	获取对应列选中的值
+setColumnValue	columnIndex, value	-	设置对应列选中的值
+getColumnIndex	columnIndex	optionIndex	获取对应列选中项的索引
+setColumnIndex	columnIndex, optionIndex	-	设置对应列选中项的索引
+getColumnValues	columnIndex	values	获取对应列中所有选项
+setColumnValues	columnIndex, values	-	设置对应列中所有选项
+</view>
+<view class="title">Radio单选框</view>
+<view class="tip">基础用法</view>
+<view>通过value绑定值当前选中项的 name</view>
+<van-radio-group value="{{radio}}" bind:change="onChange7">
+    <van-radio name="1">单选框1</van-radio>
+    <van-radio name="2">单选框2</van-radio>
+</van-radio-group>
+<view class="tip">禁用状态</view>
+<view>通过disabled属性禁止选项切换，在van-radio上设置diabled可以禁用单个选项</view>
+<van-radio-group value="{{radio}}" disabled>
+    <van-radio name="1">单选框1</van-radio>
+    <van-radio name="2">单选框2</van-radio>
+</van-radio-group>
+<view class="tip">自定义颜色</view>
+<van-radio checked-color="#07c160">复选框</van-radio>
+<view class="tip">与Cell组件一起使用</view>
+<van-radio-group value="{{radio}}" bind:change="onChange7">
+    <van-cell-group>
+        <van-cell title="单选框1" clickable data-name="1" bind:click="onClick">
+            <van-radio name="1"></van-radio>
+        </van-cell>
+        <van-cell title="单选框2" clickable data-name="2" bind:click="onClick">
+            <van-radio name="2"></van-radio>
+        </van-cell>
+    </van-cell-group>
+</van-radio-group>
+<view class="tip">RadioAPI</view>
+<view>
+    name	标识 Radio 名称	any	-
+value	当前选中项的 name	any	-
+disabled	是否为禁用状态	Boolean	false
+label-disabled	是否禁用文本内容点击	Boolean	false
+label-position	文本位置，可选值为 left	String	right
+checked-color	选中状态颜色	String	#1989fa
+</view>
+<view class="tip">Radio Event</view>
+<view>事件名	说明	回调参数
+bind:change	当绑定值变化时触发的事件	当前选中项的 name</view>
+<view class="tip">Radio 外部样式类</view>
+<view>类名	说明
+custom-class	根节点样式类
+icon-class	图标样式类
+label-class	描述信息样式类</view>
+<view class="tip">RadioGroup API</view>
+<view>
+    参数	说明	类型	默认值
+name	在表单内提交时的标识符	String	-
+value	当前选中项的 name	any	-
+disabled	是否禁用所有单选框	Boolean	false
+</view>
+<view class="tip">RadioGroup Event</view>
+<view>事件名	说明	回调参数
+bind:change	当绑定值变化时触发的事件	当前选中项的 name</view>
+<view class="tip">RadioGroup 外部样式类</view>
+<view>类名	说明
+custom-class	根节点样式类</view>
+<view class="title">Rate评分</view>
+<view class="tip">基础用法</view>
+<van-rate value="value1" bind:change="onChange8"></van-rate>
+<view class="tip">自定义图标</view>
+<van-rate value="value1" icon="like" void-icon="like-o" bind:change="onChange8"></van-rate>
+<view class="tip">自定义样式</view>
+<van-rate value="value1" size="{{25}}" count="{{6}}" color="#07c160" void-color="#ceefe8" bind:change="onChange8"></van-rate>
+<view class="tip">禁用状态</view>
+<van-rate disabled value="value1" bind:change="onChange8"></van-rate>
+<view class="tip">API</view>
+<view>
+    参数	说明	类型	默认值
+name	在表单内提交时的标识符	String	-
+value	当前分值	Number	-
+count	图标总数	Number	5
+size	图标大小 (px)	Number	20
+color	选中时的颜色	String	#ffd21e
+void-color	未选中时的颜色	String	#c7c7c7
+icon	选中时的图标名称或图片链接，可选值见 Icon 组件	String	star
+void-icon	未选中时的图标名称或图片链接，可选值见 Icon 组件	String	star-o
+readonly	是否为只读状态	Boolean	false
+disabled	是否禁用评分	Boolean	false
+disabled-color	禁用时的颜色	String	#bdbdbd
+</view>
+<view class="tip">Event</view>
+<view>事件名称	说明	回调参数
+change	当前分值变化时触发的事件	当前分值</view>
+<view class="tip">外部样式类</view>
+<view>类名	说明
+custom-class	根节点样式类
+icon-class	图标样式类</view>
+<view class="title">Search搜索</view>
+<view class="tip">基础用法</view>
+<van-search value="{{value2}}" placeholder="请输入搜索关键词"></van-search>
+<view class="tip">监听对应事件</view>
+<view>
+Search 提供了 search 和 cancel 事件。search 事件在用户点击键盘上的搜索按钮触发。cancel 事件在用户点击搜索框右侧取消按钮时触发
+</view>
+<van-search value="{{value2}}" placeholder="请输入搜索关键词" show-action bind:search="onSearch" bindCancel="onCancel"></van-search>
+<view class="tip">自定义行动按钮</view>
+<view>Search 支持自定义右侧取消按钮，使用名字为 action 的 slot 即可。</view>
+<van-search value="{{value2}}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch">
+    <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+<view class="tip">API</view>
+<view>
+参数	说明	类型	默认值
+name	在表单内提交时的标识符	String	-
+value	当前输入的值	String | Number	-
+background	搜索框背景色	String	#f2f2f2
+show-action	是否在搜索框右侧显示取消按钮	Boolean	false
+focus	获取焦点	Boolean	false
+error	是否将输入内容标红	Boolean	false
+disabled	是否禁用输入框	Boolean	false
+readonly	是否只读	Boolean	false
+maxlength	最大输入长度，设置为 -1 的时候不限制最大长度	Number	-1
+use-action-slot	是否使用 action slot	Boolean	false
+placeholder	输入框为空时占位符	String	-
+placeholder-style	指定 placeholder 的样式	String	-
+input-align	输入框内容对齐方式，可选值为 center right	String	left
+</view>
+<view class="tip">Event</view>
+<view>
+事件名	说明	参数
+bind:search	确定搜索时触发	event.detail: 当前输入值
+bind:change	输入内容变化时触发	event.detail: 当前输入值
+bind:cancel	取消搜索搜索时触发	-
+bind:focus	输入框聚焦时触发	-
+bind:blur	输入框失焦时触发	-
+bind:clear	点击清空控件时触发
+</view>
+<view class="tip">Slot</view>
+<view>
+名称	说明
+action	自定义搜索框右侧按钮，需要在showAction为 true 时才会显示
+</view>
+<view class="tip">外部样式类</view>
+<view>
+custom-class	根节点样式类
+field-class	搜索框样式类
+input-class	输入框样式类
+cancel-class	取消按钮样式类
+</view>
+<view class="title">Slider 滑块</view>
+<view class="tip">基础用法</view>
+<van-slider value="50" bind:change="onChange9"></van-slider>
+<view class="tip">指定选择范围</view>
+<van-slider value="50" min="10" max="90"></van-slider>
+<view class="tip">禁用</view>
+<van-slider value="50" disabled></van-slider>
+<view class="tip">指定步长</view>
+<van-slider value="50" step="10"></van-slider>
+<view class="tip">自定义样式</view>
+<van-slider value="50" bar-height='4px' active-color="#f44" bind:change="onChange9"></van-slider>
+<view class="tip">自定义按钮</view>
+<van-slider value="{{currentValue}}" use-button-slot bind:drag="onDrag" >
+    <view class="custom-button" slot="button">{{currentValue}}/100</view>
+</van-slider>
+<view class="tip">API</view>
+<view>
+参数	说明	类型	默认值
+value	当前进度百分比，取值范围为 0-100	Number	0
+disabled	是否禁用滑块	Boolean	false
+max	最大值	Number	100
+min	最小值	Number	0
+step	步长	Number	1
+bar-height	进度条高度	String	2px
+active-color	进度条激活态颜色	String	#1989fa
+inactive-color	进度条默认颜色	String	#e5e5e5
+</view>
+<view class="tip">Event</view>
+<view>
+事件名	说明	参数
+bind:drag	拖动进度条时触发	event.detail.value: 当前进度
+bind:change	进度值改变后触发	event.detail: 当前进度
+</view>
+<view class="tip">外部样式类</view>
+<view>
+类名	说明
+custom-class	根节点样式类
+</view>
+<view class="title">Stepper 步进器</view>
+<view class="tip">代码演示</view>
+<van-stepper value="{{1}}" bind:change="onChange10"></van-stepper>
+<view class="tip">禁用状态</view>
+<view>通过设置stepper属性来禁用stepper</view>
+<van-stepper value="{{1}}" desabled bind:change="onChange10"></van-stepper>
+<view class="tip">高级用法</view>
+<view>默认时每次加减为1.可以对组件设置step,macx,min</view>
+<van-stepper value="{{value}}" integer min="5" max="40" step="2" bind:change="onChange10"></van-stepper>
+<view class="tip">API</view>
+<view>
+参数	说明	类型	默认值
+name	在表单内提交时的标识符	String	-
+value	输入值	String | Number	最小值
+min	最小值	String | Number	1
+max	最大值	String | Number	-
+step	步数	String | Number	1
+integer	是否只允许输入整数	Boolean	false
+disabled	是否禁用	Boolean	false
+disable-input	是否禁用input框	Boolean	false
+async-change	异步变更，为 true 时input值不变化，仅触发事件 参数	说明	类型	默认值
+name	在表单内提交时的标识符	String	-
+value	输入值	String | Number	最小值
+min	最小值	String | Number	1
+max	最大值	String | Number	-
+step	步数	String | Number	1
+integer	是否只允许输入整数	Boolean	false
+disabled	是否禁用	Boolean	false
+disable-input	是否禁用input框	Boolean	false
+async-change	异步变更，为 true 时input值不变化，仅触发事件 Boolean	false
+</view>
+<view class="tip">Event</view>
+<view>
+事件名	说明	回调参数
+bind:change	当绑定值变化时触发的事件	event.detail: 当前输入的值
+bind:overlimit	点击不可用的按钮时触发	-
+bind:plus	点击增加按钮时触发	-
+bind:minus	点击减少按钮时触发	-
+bind:blur	输入框失焦时触发
+</view>
+<view class="tip">外部样式类</view>
+<view>
+类名	说明
+custom-class	根节点样式类
+input-class	输入框样式类
+plus-class	加号按钮样式类
+minus-class	减号按钮样式类
+</view>
+<view class="title">Switch 开关</view>
+<view class="tip">基础用法</view>
+<van-switch checked="{{checked}}" bind:change="onChange11"></van-switch>
+<view class="tip">禁用状态</view>
+<van-switch checked="{{checked}}" disabled></van-switch>
+<view class="tip">加载状态</view>
+<van-switch checked="{{checked}}" loading></van-switch>
+<view class="tip">自定义大小</view>
+<van-switch checked="{{checked}}" size="24px"></van-switch>
+<view class="tip">自定义颜色</view>
+<van-switch checked="{{checked}}"active-color="#07c160" inactive-color="#f44"></van-switch>
+<view class="tip">异步控制</view>
+<van-switch checked="{{checked}}" bind:change="onChange12"></van-switch>
+<view class="tip">API</view>
+<view>
+参数	说明	类型	默认值
+name	在表单内提交时的标识符	String	-
+checked	开关选中状态	Boolean	false
+loading	是否为加载状态	Boolean	false
+disabled	是否为禁用状态	Boolean	false
+size	开关尺寸	String	30px
+active-color	打开时的背景色	String	#1989fa
+inactive-color	关闭时的背景色	String	#fff
+</view>
+<view class="tip">Event</view>
+<view>
+事件名	说明	参数
+bind:change	开关状态切换回调	event.detail: 是否选中开关
+</view>
+<view class="tip">外部样式类</view>
+<view>
+类名	说明
+custom-class	根节点样式类
+node-class	圆点样式类
+</view>
+<view class="title">SwitchCell 开关单元格</view>
+<view class="tip">基础用法</view>
+<van-switch-cell title="标题" checked="{{checked}}" bind:change="onChange11"></van-switch-cell>
+<view class="tip">禁用状态</view>
+<view>通过disabled属性可以将组件设置为禁用状态</view>
+<van-switch-cell disabled title="标题" checked="{{checked}}" bind:change="onChange11"></van-switch-cell>
+<view class="tip">加载状态</view>
+<view>通过loading属性将组件设置为加载状态</view>
+<van-switch-cell loading title="标题" checked="{{checked}}" bind:change="onChange11"></van-switch-cell>
+<view class="tip">API</view>
+<view>
+参数	说明	类型	默认值
+name	在表单内提交时的标识符	String	-
+checked	开关状态	Boolean	-
+title	左侧标题	String	''
+loading	是否为加载状态	Boolean	false
+disabled	是否为禁用状态	Boolean	false
+size	开关尺寸	String	24px
+active-color	开关打开时的背景色	String	#1989fa
+inactive-color	开关关闭时的背景色	String	#fff
+</view>
+<view class="tip">Event</view>
+<view>
+事件名	说明	参数
+bind:change	开关状态切换回调	event.detail: 是否选中开关
+</view>

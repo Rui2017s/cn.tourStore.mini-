@@ -12,6 +12,16 @@
     "van-checkbox":"../../miniprogram_npm/vant-weapp/checkbox/index",
     "van-checkbox-group":"../../miniprogram_npm/vant-weapp/checkbox-group/index",
     "van-datetime-picker":"../../miniprogram_npm/vant-weapp/datetime-picker/index",
-    "van-field":"../../miniprogram_npm/vant-weapp/field/index"
+    "van-field":"../../miniprogram_npm/vant-weapp/field/index",
+    "van-picker":"../../miniprogram_npm/vant-weapp/picker/index",
+    "van-toast":"../../miniprogram_npm/vant-weapp/toast/index",
+    "van-radio":"../../miniprogram_npm/vant-weapp/radio/index",
+    "van-radio-group": "../../miniprogram_npm/vant-weapp/radio-group/index",
+    "van-rate":"../../miniprogram_npm/vant-weapp/rate/index",
+    "van-search":"../../miniprogram_npm/vant-weapp/search/index",
+    "van-slider":"../../miniprogram_npm/vant-weapp/slider/index",
+    "van-stepper":"../../miniprogram_npm/vant-weapp/stepper/index",
+    "van-switch":"../../miniprogram_npm/vant-weapp/switch/index",
+    "van-switch-cell":"../../miniprogram_npm/vant-weapp/switch-cell/index"
   }
 }
